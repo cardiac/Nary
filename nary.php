@@ -37,7 +37,7 @@ class Nary
      * @static
      * @param int $base (default: 3)
      * @param int $cap (default: 100)
-     * @return void
+     * @return array
      */
     public static function calc($base = 3, $cap = 100) {
         $res = array();
