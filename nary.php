@@ -39,7 +39,8 @@ class Nary
      * @param int $cap (default: 100)
      * @return array
      */
-    public static function calc($base = 3, $cap = 100) {
+    public static function calc($base = 3, $cap = 100)
+    {
         $res = array();
         $j = $k = $num[0] = 0;
         for ($i = 0; $i < $cap; $i++) {
