@@ -19,7 +19,7 @@
  */
 
 // Configuration
-define('TOP', 10);
+define('TOP', 16);
 define('BOTTOM', 2);
 define('COUNT', 1000);
 define('COMPARE_RANGE', true);
@@ -29,6 +29,22 @@ define('COMPARE_RANGE', true);
  */
 class Nary
 {
+    private static $_symbols = array (
+        10 => 'A', 11 => 'B',
+        12 => 'C', 13 => 'D',
+        14 => 'E', 15 => 'F',
+        16 => 'G', 17 => 'H',
+        18 => 'I', 19 => 'J',
+        20 => 'K', 21 => 'L',
+        22 => 'M', 23 => 'N',
+        24 => 'O', 25 => 'P',
+        26 => 'Q', 27 => 'R',
+        28 => 'S', 29 => 'T',
+        30 => 'U', 31 => 'V',
+        32 => 'W', 33 => 'X',
+        34 => 'Y', 35 => 'Z'
+    );
+
     /**
      * calc function.
      * calculates the various number systems.
@@ -41,12 +57,16 @@ class Nary
      */
     public static function calc($base = 3, $cap = 100)
     {
+        if ($base > 36) {
+            echo 'Unable to display bases > 36 properly.';
+            return;
+        }
         $res = array();
         $j = $k = $num[0] = 0;
         for ($i = 0; $i < $cap; $i++) {
             $res[] = null;
             for ($l = count($num) - 1; $l >= 0; $l--)
-                $res[$i] .= $num[$l];
+                $res[$i] .= ($base > 10 && $num[$l] > 9) ? Nary::$_symbols[$num[$l]] : $num[$l];
             if ($k == $base - 1) {
                 for ($j = 0; $j < count($num); $j++) {
                     if ($num[$j] == $base - 1)
@@ -80,6 +100,7 @@ class Nary
             .'        <tr>'."\n"
             .'            <th>'.TOP.'</th>'."\n";
         
+        $data[TOP] = Nary::calc(TOP, COUNT);
         for ($i = BOTTOM; $i < TOP; $i++) {
             echo '            <th>'.$i.'</th>'."\n";
             $data[$i] = Nary::calc($i, COUNT);
@@ -91,7 +112,7 @@ class Nary
         
         for ($i = 0; $i < COUNT; $i++) {
             echo '        <tr>'."\n"
-                .'                <td>'.$data[TOP - 1][$i].'</td>'."\n";
+                .'                <td>'.$data[TOP][$i].'</td>'."\n";
             for ($j = BOTTOM; $j < TOP; $j++)
                 echo '            <td>'.$data[$j][$i].'</td>'."\n";
             echo '        </tr>'."\n";
