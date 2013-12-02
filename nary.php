@@ -18,6 +18,19 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+/*
+    Modify the configuration below before using the class.
+        TOP: the top end system.
+        BOTTOM: the bottom end system.
+        COUNT: the max count.
+        COMPARE_RANGE: whether or not to call range() or deuce() (convenience)
+    Two convenience methods are included:
+        Nary::range()
+        Nary::deuce()
+    These should be removed from the actual class if you intend to use
+    this algorithm in a non-trivial manner.
+ */
+
 // Configuration
 define('TOP', 16);
 define('BOTTOM', 2);
@@ -57,10 +70,8 @@ class Nary
      */
     public static function calc($base = 3, $cap = 100)
     {
-        if ($base > 36) {
-            echo 'Unable to display bases > 36 properly.';
-            return;
-        }
+        if ($base > 36)
+            throw new Exception('Unable to display bases > 36 properly.');
         $res = array();
         $j = $k = $num[0] = 0;
         for ($i = 0; $i < $cap; $i++) {
