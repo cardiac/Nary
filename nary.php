@@ -1,7 +1,7 @@
 <?php
 /*
     Nary
-    Copyright (C) 2013 Ryan Strug
+    Copyright (C) 2013-2014 Ryan Strug
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -42,7 +42,20 @@ class Nary
         28 => 'S', 29 => 'T',
         30 => 'U', 31 => 'V',
         32 => 'W', 33 => 'X',
-        34 => 'Y', 35 => 'Z'
+        34 => 'Y', 35 => 'Z',
+		36 => 'a', 37 => 'b',
+		38 => 'c', 39 => 'd',
+		40 => 'e', 41 => 'f',
+		42 => 'g', 43 => 'h',
+		44 => 'i', 45 => 'j',
+		46 => 'k', 47 => 'l',
+		48 => 'm', 49 => 'n',
+		50 => 'o', 51 => 'p',
+		52 => 'q', 53 => 'r',
+		54 => 's', 55 => 't',
+		56 => 'u', 57 => 'v',
+		58 => 'w', 59 => 'x',
+		60 => 'y', 61 => 'z'
     );
 
     /**
@@ -57,8 +70,8 @@ class Nary
      */
     public static function calc($base = 3, $cap = 100)
     {
-        if ($base > 36)
-            throw new Exception('Unable to display bases > 36 properly.');
+        if ($base > 62)
+            throw new Exception('Unable to display bases > 62 properly.');
         $res = array();
         $j = $k = $num[0] = 0;
         for ($i = 0; $i < $cap; $i++) {
