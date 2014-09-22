@@ -166,7 +166,7 @@ class Nary
     }
 }
 
-if (COMPARE_RANGE == true)
+if (COMPARE_RANGE)
     Nary::range();
 else
     Nary::deuce();
